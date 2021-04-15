@@ -591,3 +591,22 @@ function rubah_password_s() {
 	});
 	return false;
 }
+function aktifkan_semua_siswa () {
+	if (confirm('Anda yakin akan mengaktifkan untuk seluruh user ..?')) {
+
+		$.ajax({
+			type: "GET",
+			url: base_url+"adm/m_siswa/aktifkan_semua/",
+			success: function(response) {
+				if (response.status == "ok") {
+					window.location.assign(base_url+"adm/m_siswa");
+				} else {
+					alert(response.caption);
+				}
+			}
+		});
+
+	}
+
+	return false;
+}
