@@ -206,7 +206,8 @@ class Adm extends CI_Controller {
 			if (!empty($q_get_user)) {
 				foreach ($q_get_user as $j) {
 					if ($j['usernya'] == "N") {
-						$this->db->query("INSERT INTO m_admin VALUES (null, '".$j['nim']."', md5('".$j['nim']."'), 'siswa', '".$j['id']."')");
+					    $password = rand(111111,999999);
+						$this->db->query("INSERT INTO m_admin VALUES (null, '".$j['nim']."', md5('".$password."'), 'siswa', '".$j['id']."', '". $password  ."')");
 						$jml_aktif++;
 					}
 				}
