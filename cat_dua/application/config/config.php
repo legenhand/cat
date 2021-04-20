@@ -6,7 +6,7 @@ $pc_root = explode("/", $root);
 $uri_js = count($pc_root) - 2;
 
 
-$config['jml_opsi']			= 4;			//isi dengan pilihan opsi jawaban, HARUS <= 5
+$config['jml_opsi']			= 5;			//isi dengan pilihan opsi jawaban, HARUS <= 5
 $config['uri_js']			= $uri_js;		
 $config['editor_style']		= "replace";	//pilihannya "inline" atau "replace";
 $config['nama_aplikasi']	= "CAT - Computer Assisted Test";

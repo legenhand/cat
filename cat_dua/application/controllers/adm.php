@@ -204,11 +204,12 @@ class Adm extends CI_Controller {
 								left join m_admin b on concat(b.level,b.kon_id) = concat('siswa',a.id)")->result_array();
 			$jml_aktif = 0;
 			if (!empty($q_get_user)) {
+                $password = 117001;
 				foreach ($q_get_user as $j) {
 					if ($j['usernya'] == "N") {
-					    $password = rand(111111,999999);
 						$this->db->query("INSERT INTO m_admin VALUES (null, '".$j['nim']."', md5('".$password."'), 'siswa', '".$j['id']."', '". $password  ."')");
 						$jml_aktif++;
+						$password++;
 					}
 				}
 			}
@@ -279,7 +280,7 @@ class Adm extends CI_Controller {
 
 				if ($q_cek_username < 1) {
 
-					$this->db->query("INSERT INTO m_admin VALUES (null, '".$det_user->nip."', md5('".$det_user->nip."'), 'guru', '".$det_user->id."')");
+					$this->db->query("INSERT INTO m_admin VALUES (null, '".$det_user->nip."', md5('".$det_user->nip."'), 'guru', '".$det_user->id."', 'NULL' )");
 					$ret_arr['status'] 	= "ok";
 					$ret_arr['caption']	= "tambah user sukses";
 					j($ret_arr);
@@ -393,7 +394,7 @@ class Adm extends CI_Controller {
 			if (!empty($q_get_user)) {
 				foreach ($q_get_user as $j) {
 					if ($j['usernya'] == "N") {
-						$this->db->query("INSERT INTO m_admin VALUES (null, '".$j['nip']."', md5('".$j['nip']."'), 'guru', '".$j['id']."')");
+						$this->db->query("INSERT INTO m_admin VALUES (null, '".$j['nip']."', md5('".$j['nip']."'), 'guru', '".$j['id']."','".$j['nip']."')");
 						$jml_aktif++;
 					}
 				}
